@@ -4,10 +4,15 @@ import { IoMenuOutline } from "react-icons/io5";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { Avatar } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../store/slices/userSlice";
 
 
 const Navbar = () => {
-    const user = JSON.parse(localStorage.getItem("user"))
+    const dispatch = useDispatch()
+    const { cartItems } = useSelector((state) => state.cartItems)
+    // const user = JSON.parse(localStorage.getItem("user"))
+    const { user } = useSelector((state) => state.user)
     const [menu, setMenu] = useState(false)
     const [profileMenu, setProfileMenu] = useState(false)
     const navLinks = [
@@ -29,11 +34,17 @@ const Navbar = () => {
         }
     ]
 
+    // console.log("user :", user);
+
     const showMenuHandler = () => {
         setMenu(!menu)
     }
     const showProfileMenuHandler = () => {
         setProfileMenu(!profileMenu)
+    }
+    const userLogedOut = () => {
+        dispatch(logoutUser())
+        localStorage.clear()
     }
     return (
         <section className="bg-[#7DC08E]  px-10">
@@ -44,10 +55,11 @@ const Navbar = () => {
                         {navLinks.map((data) => <li key={data.lable}>
                             <NavLink to={data.link} className="nav font-bold text-white">{data.lable}</NavLink>
                         </li>)}
-                        <li>
-                            <NavLink to="/cart" className="nav font-bold text-white">
+                        <li className="relative">
+                            <NavLink to="/cart" className=" nav font-bold text-white">
                                 <MdOutlineAddShoppingCart size={25} />
                             </NavLink>
+                            {cartItems?.length > 0 ? <span className="absolute bg-[lightblue] p-1 px-2 rounded-full -top-5 right-0 font-medium text-sm">{cartItems?.length}</span> : ""}
                         </li>
                         {user ? <li>
                             <Avatar onClick={showProfileMenuHandler} className="capitalize" sx={{
@@ -104,7 +116,7 @@ const Navbar = () => {
                 </div>
                 }
                 {profileMenu &&
-                    <div className="absolute top-16 right-0 bg-[#7DC08E]" >
+                    <div className="absolute z-50 top-16 right-0 bg-[#7DC08E]" >
                         <div className="w-[200px] flex justify-center items-center h-auto p-10">
                             <ul className="w-full flex flex-col gap-5 justify-center ">
                                 <li>
@@ -114,7 +126,7 @@ const Navbar = () => {
                                     <NavLink className="text-white hover:text-gray-600 font-semibold" to="/my-orders">My Orders</NavLink>
                                 </li>
                                 <li>
-                                    <button className="border border-white py-2 px-4 text-white hover:text-gray-600 font-semibold">Logout</button>
+                                    <button onClick={userLogedOut} className="border border-white py-2 px-4 text-white hover:text-gray-600 font-semibold">Logout</button>
                                 </li>
                             </ul>
                         </div>

@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 import Slider from "react-slick";
 import ProductCard from "./ProductCard";
-import { allproducts } from "../data/products";
+// import { allproducts } from "../data/products";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-const FeaturedCarousal = () => {
+
+const FeaturedCarousal = ({ products }) => {
 
     var settings = {
         infinite: true,
@@ -44,7 +46,7 @@ const FeaturedCarousal = () => {
         <div className="slider-container px-10 pb-16">
             <h1 className="text-2xl pb-5 text-center text-gray-800 font-bold">Featured Products</h1>
             <Slider {...settings}>
-                {allproducts.map((product) =>
+                {products.map((product) =>
                     <ProductCard product={product} key={product._id} />
                 )}
             </Slider>

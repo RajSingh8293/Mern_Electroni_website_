@@ -1,6 +1,6 @@
 export const allproducts = [
   {
-    _id: 1,
+    // _id: 1,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -20,7 +20,7 @@ export const allproducts = [
   },
 
   {
-    _id: 2,
+    // _id: 2,
     name: "Samsung A40s",
     brand: "Samsung",
     image:
@@ -38,7 +38,7 @@ export const allproducts = [
     totalReviews: 250,
   },
   {
-    _id: 3,
+    // _id: 3,
     name: "Lenovo IdeaPad 3i Chromebook",
     brand: "Lenovo",
     image: "https://m.media-amazon.com/images/I/71bwzCMcQvL._AC_UY218_.jpg",
@@ -57,7 +57,7 @@ export const allproducts = [
   },
 
   {
-    _id: 4,
+    // _id: 4,
     name: "Samsung A40s",
     brand: "Samsung",
     image:
@@ -76,7 +76,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 5,
+    // _id: 5,
     name: "Acer Aspire 3 A315-24P-R7VH Slim Laptop",
     brand: "Acer",
     image: "https://m.media-amazon.com/images/I/61gKkYQn6lL._AC_UY218_.jpg",
@@ -95,7 +95,7 @@ export const allproducts = [
   },
 
   {
-    _id: 6,
+    // _id: 6,
     name: "Samsung A30s",
     brand: "Samsung",
     image:
@@ -113,7 +113,7 @@ export const allproducts = [
     totalReviews: 320,
   },
   {
-    _id: 7,
+    // _id: 7,
     name: "Samsung A40s",
     brand: "Samsung",
     image:
@@ -131,7 +131,7 @@ export const allproducts = [
     totalReviews: 250,
   },
   {
-    _id: 8,
+    // _id: 8,
     name: "Samsung A40s",
     brand: "Samsung",
     image:
@@ -150,7 +150,7 @@ export const allproducts = [
   },
 
   {
-    _id: 9,
+    // _id: 9,
     name: "Samsung A40s",
     brand: "Samsung",
     image:
@@ -168,7 +168,7 @@ export const allproducts = [
     totalReviews: 150,
   },
   {
-    _id: 10,
+    // _id: 10,
     name: "Lenovo IdeaPad 3i",
     brand: "Lenovo",
     image: "https://m.media-amazon.com/images/I/71pfqn9OOsL._AC_UY218_.jpg",
@@ -186,7 +186,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 11,
+    // _id: 11,
     name: "Dell 5i ",
     brand: "Dell",
     image: "https://m.media-amazon.com/images/I/81divYKpeTL._AC_UY218_.jpg",
@@ -204,7 +204,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 12,
+    // _id: 12,
     name: "HP 3i Chromebook",
     brand: "HP",
     image: "https://m.media-amazon.com/images/I/61KZBt8QeGL._AC_UY218_.jpg",
@@ -222,7 +222,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 13,
+    // _id: 13,
     name: "Acer Aspire Go 15 Slim Laptop",
     brand: "Acer",
     image: "https://m.media-amazon.com/images/I/71wKJVtV-+L._AC_UY218_.jpg",
@@ -240,7 +240,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 14,
+    // _id: 14,
     name: "ASUS Chromebook CX1",
     brand: "Acer",
     image:
@@ -259,7 +259,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 15,
+    // _id: 15,
     name: "2.4 Ghz Wireless Optical Computer Mouse",
     brand: "Dell",
     image:
@@ -278,7 +278,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 16,
+    // _id: 16,
     name: "2.4 Ghz Wireless Optical Computer Mouse",
     brand: "Dell",
     image:
@@ -297,7 +297,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 17,
+    // _id: 17,
     name: "Samsung A40s",
     brand: "Samsung",
     image:
@@ -317,7 +317,7 @@ export const allproducts = [
   },
 
   {
-    _id: 18,
+    // _id: 18,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image: "https://m.media-amazon.com/images/I/81rbj+RbISL._AC_UY218_.jpg",
@@ -335,7 +335,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 19,
+    // _id: 19,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image: "https://m.media-amazon.com/images/I/711f6KLsMaL._AC_UY218_.jpg",
@@ -353,7 +353,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 20,
+    // _id: 20,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -372,7 +372,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 21,
+    // _id: 21,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -391,7 +391,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 22,
+    // _id: 22,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -410,7 +410,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 23,
+    // _id: 23,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -429,7 +429,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 24,
+    // _id: 24,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -448,7 +448,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 25,
+    // _id: 25,
     name: "SAMSUNG Galaxy Watch 6 44mm Bluetooth Smartwatch",
     brand: "Samsung",
     image:
@@ -467,7 +467,7 @@ export const allproducts = [
     totalReviews: 400,
   },
   {
-    _id: 26,
+    // _id: 26,
     name: "Samsung A30s",
     brand: "Samsung",
     image:
@@ -485,7 +485,7 @@ export const allproducts = [
     totalReviews: 320,
   },
   {
-    _id: 27,
+    // _id: 27,
     name: "TOZO A1 Mini Wireless Earbuds Bluetooth",
     brand: "Tozo",
     image: "https://m.media-amazon.com/images/I/71ulXCrk-LL._AC_UY218_.jpg",
@@ -502,7 +502,7 @@ export const allproducts = [
     totalReviews: 320,
   },
   {
-    _id: 28,
+    // _id: 28,
     name: "LISEN Retractable Car Charger",
     brand: "Lisen",
     image: "https://m.media-amazon.com/images/I/71R6ka8Os4L._AC_UY218_.jpg",
@@ -519,7 +519,7 @@ export const allproducts = [
     totalReviews: 320,
   },
   {
-    _id: 29,
+    // _id: 29,
     name: "SUPERONE Retractable Car Charger",
     brand: "Superone",
     image:
@@ -537,7 +537,7 @@ export const allproducts = [
     totalReviews: 320,
   },
   {
-    _id: 30,
+    // _id: 30,
     name: "OHLPRO 4 in1 Retractable Car Charger",
     brand: "Ohlpro",
     image:
@@ -555,7 +555,7 @@ export const allproducts = [
     totalReviews: 320,
   },
   {
-    _id: 31,
+    // _id: 31,
     name: "iPhone 15 Car Charger",
     brand: "Apple",
     image: "https://m.media-amazon.com/images/I/31lGnsLHfML._AC_.jpg",

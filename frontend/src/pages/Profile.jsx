@@ -1,18 +1,40 @@
 /* eslint-disable no-unused-vars */
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import Layout from "../comonents/Layout"
 import Input from "../comonents/Input"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { updateUser } from "../store/slices/userSlice"
 
 
 const Profile = () => {
-    const user = JSON.parse(localStorage.getItem("user"))
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    // const user = JSON.parse(localStorage.getItem("user"))
+    const { user, loading, isAuthenticated } = useSelector((state) => state.user)
+
+    console.log("user :", user);
+
+
 
     const [userData, setUserData] = useState({
         username: user?.username || "",
         email: user?.email || "",
     })
-    console.log(user);
+    // console.log(user);
+
+    const onChangeHandler = (e) => {
+        let name = e.target.name
+        let value = e.target.value
+        setUserData({ ...userData, [name]: value })
+    }
+
+    const updateProfile = (e) => {
+        e.preventDefault()
+        console.log("userData :", userData);
+        dispatch(updateUser(userData))
+    }
+
 
     return (
         <Layout>
@@ -55,11 +77,11 @@ const Profile = () => {
                         <div className="mt-8 w-[500px]">
                             <form action="
                             " className="flex flex-col gap-5">
-                                <Input type="text" name="username" placeholder="Username" lable="username" value={userData?.username} />
+                                <Input type="text" name="username" onChange={onChangeHandler} placeholder="Username" lable="username" value={userData?.username} />
 
-                                <Input type="email" name="email" placeholder="Email" lable="email" value={userData?.email} />
+                                <Input type="email" name="email" onChange={onChangeHandler} placeholder="Email" lable="email" value={userData?.email} />
                                 <div className="flex justify-end">
-                                    <button className="bg-[#7DC08E] max-w-[100px] hover:bg-[#72af81] p-2 px-6 rounded-md text-white font-semibold">Save</button>
+                                    <button type="submit" onClick={updateProfile} className="bg-[#7DC08E] max-w-[100px] hover:bg-[#72af81] p-2 px-6 rounded-md text-white font-semibold">Save</button>
                                 </div>
                             </form>
                         </div>

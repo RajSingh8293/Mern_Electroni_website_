@@ -1,16 +1,56 @@
 import { FormControlLabel, Radio, RadioGroup, Rating } from '@mui/material';
 import { ListFilter, MinusIcon, PlusIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { categoriesFilterArray, colorsFilterArray, pricesFilterArray, ratingFilterArray } from '../data/filters';
-import { allproducts } from '../data/products';
+// import { allproducts } from '../data/products';
 import ProductCard from '../comonents/ProductCard';
 import Layout from '../comonents/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../store/slices/productSlice';
 const Shop = () => {
+
+
+    const dispatch = useDispatch()
+    const { products } = useSelector((state) => state.products)
+    // console.log("products :", products.products);
     const [showCategory, setShowCategory] = useState(false)
     const [showPrice, setShowPrice] = useState(false)
     const [showColors, setShowColors] = useState(false)
     const [showRating, setShowRating] = useState(false)
     const [showMobileFilter, setShowMobileFilter] = useState(false)
+    const [selectCategory, setSelectCategory] = useState("all")
+    const [selectPrice, setSelectPrice] = useState("all")
+    const [selectColors, setSelectColors] = useState("all")
+    const [selectRatings, setSelectRatings] = useState("all")
+
+    const filteredProducts = products.filter((product) => {
+        const categoryMatch = selectCategory === "all" || product.category === selectCategory
+        const priceMatch = selectPrice === "all" || (selectPrice === 'under200' && product.price < 200) || (selectPrice === '200to300' && product.price >= 200 && product.price < 300) || (selectPrice === '300to500' && product.price >= 300 && product.price < 500) || (selectPrice === 'over500' && product.price > 500)
+        const colorsMatch = selectColors === "all" || product.color === selectColors
+        const reatingMatch = selectRatings === "all" || product.ratings === selectRatings
+        return categoryMatch && priceMatch && colorsMatch && reatingMatch
+    })
+
+    const categorySelected = (data) => {
+        setSelectCategory(data)
+    }
+    const priceSelected = (data) => {
+        setSelectPrice(data)
+    }
+    const cololsSelected = (data) => {
+        setSelectColors(data)
+    }
+    const ratingSelected = (data) => {
+        setSelectRatings(data)
+    }
+    const resetFilteration = () => {
+        setSelectCategory('all')
+        setSelectPrice('all')
+        setSelectColors('all')
+        setSelectRatings('all')
+    }
+
+
 
     const showCategoryFilterHandler = (data) => {
         setShowCategory(data)
@@ -32,6 +72,14 @@ const Shop = () => {
         console.log(data);
     }
 
+
+
+    // console.log("products :", products);
+
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [dispatch])
     return (
         <Layout>
             <section className="px-10 py-16 relative">
@@ -59,12 +107,13 @@ const Shop = () => {
                                     name="radio-buttons-group"
                                 >
                                     {categoriesFilterArray.map((data, index) =>
-                                        <FormControlLabel key={index} value={data?.lable} control={<Radio size='small'
+                                        <FormControlLabel key={index} value={data?.value} onChange={() => categorySelected(data.value)} control={<Radio size='small'
                                             sx={{
                                                 '&.Mui-checked': {
                                                     color: "tomato"
                                                 }
                                             }}
+
                                         />} label={data?.lable} />)}
                                 </RadioGroup>
 
@@ -86,7 +135,7 @@ const Shop = () => {
                                     name="radio-buttons-group"
                                 >
                                     {pricesFilterArray.map((data, index) =>
-                                        <FormControlLabel key={index} value={data?.lable} control={<Radio size='small'
+                                        <FormControlLabel key={index} value={data?.lable} onChange={() => priceSelected(data.value)} control={<Radio size='small'
                                             sx={{
                                                 '&.Mui-checked': {
                                                     color: "tomato"
@@ -113,7 +162,7 @@ const Shop = () => {
                                     name="radio-buttons-group"
                                 >
                                     {colorsFilterArray.map((data, index) =>
-                                        <FormControlLabel key={index} value={data?.lable} control={<Radio size='small'
+                                        <FormControlLabel key={index} value={data?.lable} onChange={() => cololsSelected(data.value)} control={<Radio size='small'
                                             sx={{
                                                 '&.Mui-checked': {
                                                     color: "tomato"
@@ -141,7 +190,7 @@ const Shop = () => {
                                 >
                                     {ratingFilterArray.map((data, index) =>
                                         <div key={index} className='flex items-center gap-2'>
-                                            <FormControlLabel value={data?.lable} control={<Radio size='small'
+                                            <FormControlLabel value={data?.lable} onChange={() => ratingSelected(data.value)} control={<Radio size='small'
                                                 sx={{
                                                     '&.Mui-checked': {
                                                         color: "tomato"
@@ -158,7 +207,7 @@ const Shop = () => {
                             </div>
                         </div>
                         <div>
-                            <button className="bg-black py-2 px-4 text-white">Reset Filters</button>
+                            <button onClick={resetFilteration} className="bg-black py-2 px-4 text-white">Reset Filters</button>
                         </div>
                     </div>
                 </div>
@@ -185,7 +234,7 @@ const Shop = () => {
                                         name="radio-buttons-group"
                                     >
                                         {categoriesFilterArray.map((data, index) =>
-                                            <FormControlLabel key={index} value={data?.lable} control={<Radio size='small'
+                                            <FormControlLabel key={index} value={data?.lable} onChange={() => categorySelected(data.value)} control={<Radio size='small'
                                                 sx={{
                                                     '&.Mui-checked': {
                                                         color: "tomato"
@@ -212,7 +261,7 @@ const Shop = () => {
                                         name="radio-buttons-group"
                                     >
                                         {pricesFilterArray.map((data, index) =>
-                                            <FormControlLabel key={index} value={data?.lable} control={<Radio size='small'
+                                            <FormControlLabel key={index} value={data?.lable} onChange={() => priceSelected(data.value)} control={<Radio size='small'
                                                 sx={{
                                                     '&.Mui-checked': {
                                                         color: "tomato"
@@ -239,7 +288,7 @@ const Shop = () => {
                                         name="radio-buttons-group"
                                     >
                                         {colorsFilterArray.map((data, index) =>
-                                            <FormControlLabel key={index} value={data?.lable} control={<Radio size='small'
+                                            <FormControlLabel key={index} value={data?.lable} onChange={() => cololsSelected(data.value)} control={<Radio size='small'
                                                 sx={{
                                                     '&.Mui-checked': {
                                                         color: "tomato"
@@ -267,7 +316,7 @@ const Shop = () => {
                                     >
                                         {ratingFilterArray.map((data, index) =>
                                             <div key={index} className='flex items-center gap-2'>
-                                                <FormControlLabel value={data?.lable} control={<Radio size='small'
+                                                <FormControlLabel value={data?.lable} onChange={() => ratingSelected(data.value)} control={<Radio size='small'
                                                     sx={{
                                                         '&.Mui-checked': {
                                                             color: "tomato"
@@ -284,7 +333,7 @@ const Shop = () => {
                                 </div>
                             </div>
                             <div>
-                                <button className="bg-black py-2 px-4 text-white">Reset Filters</button>
+                                <button onClick={resetFilteration} className="bg-black py-2 px-4 text-white">Reset Filters</button>
                             </div>
                         </div>
                     </div>
@@ -292,7 +341,7 @@ const Shop = () => {
                         <div className="">
                             <h1 className=" pb-5 text-left text-gray-600 font-bold">Showing 31 products</h1>
                             <div className="grid gap-5 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 pt-8">
-                                {allproducts?.map((product) =>
+                                {filteredProducts?.map((product) =>
                                     <ProductCard product={product} key={product._id} />
                                 )}
                             </div>

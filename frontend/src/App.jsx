@@ -16,10 +16,20 @@ import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import ConfirmOrder from './pages/ConfirmOrder'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { profileUser } from './store/slices/userSlice'
+import PrivateRoute from './protectedRoutes/ProtectedRoute'
+import PaymentSuccess from './pages/PaymentSuccess'
+
 
 
 function App() {
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(profileUser())
+  }, [dispatch])
 
   return (
     <BrowserRouter>
@@ -31,13 +41,25 @@ function App() {
         <Route path="*" element={<NoPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>}>
+        </Route>
+        <Route path="/payment-success/:id" element={<PaymentSuccess />} />
+        <Route path="/my-orders" element={
+          <PrivateRoute>
+            <MyOrders />
+          </PrivateRoute>
+        } />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/confirm-order" element={<ConfirmOrder />} />
+        <Route path="/confirm-order" element={
+          <ConfirmOrder />
+        } />
 
       </Routes>
       {/* <Footer /> */}

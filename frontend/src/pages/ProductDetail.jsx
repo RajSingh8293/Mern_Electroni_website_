@@ -2,30 +2,36 @@
 import { Rating } from "@mui/material"
 import Layout from "../comonents/Layout"
 import { FaStar } from "react-icons/fa";
-import { allproducts } from "../data/products";
+// import { allproducts } from "../data/products";
 import ProductCard from "../comonents/ProductCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { fetchSingleProduct } from "../store/slices/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../store/slices/cartSlice";
 
 const ProductDetail = () => {
     const { id } = useParams()
+    const dispatch = useDispatch()
+    const { product, products } = useSelector((state) => state.products)
 
-    const [product, setProduct] = useState({})
+
+
     const [relatedPoducts, setrelatedProducts] = useState([])
 
-    const copyProducts = [...allproducts]
-
-    const getProducts = (id) => {
-        const getProductById = copyProducts?.find((product) => product._id == id)
-        setProduct(getProductById)
-    }
+    const copyProducts = [...products]
 
     useEffect(() => {
-        const getRelatedProducts = copyProducts?.filter((data) => data?.category == product?.category)
-        console.log("getRelatedProducts :", getRelatedProducts);
+        const getRelatedProducts = copyProducts?.filter((data) => data?.category === product?.category)
+        // console.log("getRelatedProducts :", getRelatedProducts);
         setrelatedProducts(getRelatedProducts)
-        getProducts(id)
-    }, [id, product])
+        // getProducts(id)
+    }, [product])
+
+
+    useEffect(() => {
+        dispatch(fetchSingleProduct(id))
+    }, [])
 
     return (
         <Layout>
@@ -70,7 +76,7 @@ const ProductDetail = () => {
 
                         <div className="flex gap-5 mt-8">
                             <button className="rounded py-2.5 px-4 border-transparent min-w-[200px] hover:bg-[#6ea57c] bg-[#7DC08E] text-white font-semibold">Buy Now</button>
-                            <button className="rounded py-2 px-4 min-w-[200px] border text-gray-800 border-[#7DC08E] hover:bg-[#7DC08E] font-semibold">Buy Now</button>
+                            <button onClick={() => dispatch(addToCart(product))} className="rounded py-2 px-4 min-w-[200px] border text-gray-800 border-[#7DC08E] hover:bg-[#7DC08E] font-semibold">Add To Cart</button>
                         </div>
                         <div className="mt-8">
                             <h2 className="text-xl font-bold text-gray-800">

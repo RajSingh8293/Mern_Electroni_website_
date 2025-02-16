@@ -2,10 +2,14 @@ import { Link, useNavigate } from "react-router-dom"
 import Input from "../comonents/Input"
 import Layout from "../comonents/Layout"
 import { useEffect, useState } from "react"
+import { loginUser } from "../store/slices/userSlice"
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
     const navigate = useNavigate()
-    const user = JSON.parse(localStorage.getItem("user"))
+    const dispatch = useDispatch()
+    // const userinfo = JSON.parse(localStorage.getItem("userinfo"))
+    const { user, isAuthenticated } = useSelector((state) => state.user)
     const [showPassword, setShowPassword] = useState(false)
     const [userData, setUserdata] = useState({
         email: "",
@@ -24,14 +28,16 @@ const Login = () => {
     const submitLogin = (e) => {
         e.preventDefault()
         console.log("userData :", userData);
-        localStorage.setItem("user", JSON.stringify(userData))
+        dispatch(loginUser(userData))
+        localStorage.setItem("userinfo", JSON.stringify(userData))
+        navigate('/profile')
     }
 
     useEffect(() => {
-        if (user) {
-            navigate("/profile")
+        if (isAuthenticated) {
+            navigate('/profile')
         }
-    }, [navigate, user])
+    }, [dispatch, navigate, user, isAuthenticated])
     return (
 
         <Layout>
