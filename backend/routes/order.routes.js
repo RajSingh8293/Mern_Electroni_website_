@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import {
   createOrder,
-  deleteAllOrders,
+  // deleteAllOrders,
   deleteOrderById,
   getAllOrders,
   getMyOrders,
