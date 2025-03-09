@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World! I am going somewhere");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello World! I am going somewhere");
+});
 
 import UserRouter from "./routes/user.routes.js";
 import ProductRouter from "./routes/product.routes.js";
