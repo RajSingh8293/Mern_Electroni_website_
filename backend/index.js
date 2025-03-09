@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
 import dbConnect from "./db/conn.js";
