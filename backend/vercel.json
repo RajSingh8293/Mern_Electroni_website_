@@ -2,6 +2,6 @@
 
 {
   "version": 2,
-  "builds": [], // Remove this if present
+  "builds": [], 
   "routes": []
 }
